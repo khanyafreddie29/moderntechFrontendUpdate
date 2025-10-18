@@ -1,0 +1,417 @@
+@import url('https://fonts.googleapis.com/css2?family=Albert+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Albert Sans, Arial, Helvetica, sans-serif; /* Fixed semicolon */
+}
+
+/* Center the whole page */
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center; /* Aligns items horizontally */
+    align-items: center; /* Aligns items vertically */
+    background: linear-gradient(160deg, #6EC1D1, #CBEAEC);
+    overflow: hidden;
+
+}
+
+.login-form {
+    position: relative; /* enables z-index to take effect */
+    z-index: 10;        /* higher than blob/orbit */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: 1px transparent;
+    border-radius: 15px;
+    height: 500px;
+    width: 350px;
+    background-color: #fff;
+    box-shadow: 0 15px 40px hsla(0, 1%, 18%, 0.486);
+}
+
+.login-form h2{
+    text-align: center;
+    color: #333;
+}
+
+.login-form h3{
+    text-align: center;
+    color: hsla(0, 0%, 20%, 0.479);
+    margin: 5px;
+    font-size: 15px;
+}
+
+.login-form input {
+    margin-top: 15px;
+    padding: 5px;
+    border: none;
+    border-bottom: 2px solid hsla(0, 0%, 0%, 0.274);
+    background-color: transparent;
+    outline: none;
+    transition: border-bottom 0.3s ease-in-out; /* Added transition */
+    width: 250px;
+}
+
+.login-form input:focus {
+    border-bottom: 2px solid hsla(173, 51%, 35%, 0.875);
+}
+
+.login-form label {
+    margin-top: 15px;
+    color:#333
+}
+
+.login-form button {
+    margin-top: 50px;
+    width: 250px;
+    height: 50px; /* Increased height */
+    border: none;
+    border-radius: 13px;
+    cursor: pointer;
+    background: linear-gradient(135deg, #39769e, #6CB1DA);
+    font-size: 16px;
+    font-weight: bold; /* Bold text */
+    transition: background-color 0.3s ease;
+    color: azure;
+}
+
+.login-form button:hover{
+    background-color:linear-gradient(135deg, #87c4ec, #6CB1DA);
+    box-shadow: hsla(172, 75%, 42%, 0.877) 0px 7px 29px 0px;
+}
+
+.login-form:active{
+    transform: translateY(10px);
+    transition: 100ms;
+}
+
+.login-form label i {
+    margin-right: 5px;
+    font-size: 15px;
+    color: #333;
+}
+
+@keyframes headShake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-5px);
+    }
+}
+
+.animate__headShake {
+    animation: headShake 2s ease-in-out;
+}
+
+.forgot-pwd {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #3c9bae;
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.forgot-pwd:hover {
+    color: #6cb1da;
+    text-decoration: underline;
+    transform: scale(1.05);
+}
+
+ /* Add styling for the toggle icon */
+ .password-container {
+    position: relative;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.password-container i {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+/* 2. CRUCIAL: Add padding to the input so the text is not covered by the icon */
+.password-container input {
+    width: 250px;
+    padding-right: 40px; /* Make space for the 40px wide icon area */
+    box-sizing: border-box; 
+    /* other styling... */
+}
+
+/* 3. The large, reliable clickable area */
+#toggle-container {
+    position: absolute;
+    top: 0; 
+    bottom: 0; 
+    right: 0; 
+    width: 40px; /* Gives a clear 40px wide clickable area */
+    
+    /* Use Flexbox to perfectly center the small eye icon inside the large container */
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    
+    cursor: pointer;
+    z-index: 10; /* Ensures it is visually on top of the input */
+}
+
+input[type="password"], input[type="text"] {
+    padding-right: 30px; /* to make space for the eye icon */
+}
+
+.blob .orbit{
+    position: fixed;
+    z-index: 1;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+
+.blob{
+    width: 65vw;
+    max-width: 250px;
+    opacity: 0.50;
+    aspect-ratio: 1/1;
+    animation: spin 60s infinite reverse linear;
+
+    /* NEW: Position the blob inside its orbit container */
+    position: absolute;
+    bottom: 15%; /* Push from the bottom edge of the orbit */
+    right: 15%; /* Push from the right edge of the orbit */
+    /* Adjust these percentage values (15%) to fine-tune the southeast position. */
+}
+
+.blob{
+width: 65vw;
+max-width: 250px;
+opacity: 0.50;
+aspect-ratio: 1/1;
+animation: spin 60s infinite reverse linear;
+}
+
+@keyframes spin {
+    100% {
+        rotate: 1turn
+    }
+}
+
+.orbit{
+   position: fixed;
+   /* NEW POSITIONING: Move the container to the bottom-right area */
+    top: auto; /* Remove top centering */
+    left: auto; /* Remove left centering */
+    bottom: -100px; /* Adjust this value to move it up from the bottom edge */
+    right: -100px; /* Adjust this value to move it left from the right edge */
+    
+    /* Remove translate, as it was used for centering */
+    translate: 0 0;
+   width: 38vw;
+   aspect-ratio: 1/1;
+   border: 1px solid rgb(255, 255, 255);
+   border-radius: 50%;
+   animation: spin 50s infinite linear;
+   display: flex;
+   z-index: 1;
+}
+.orbit3{
+   position: fixed;
+   /* NEW POSITIONING: Move the container to the bottom-right area */
+    top: auto; /* Remove top centering */
+    right: auto; /* Remove left centering */
+    bottom: -100px; /* Adjust this value to move it up from the bottom edge */
+    left: -100px; /* Adjust this value to move it left from the right edge */
+    
+    /* Remove translate, as it was used for centering */
+    translate: 0 0;
+   width: 38vw;
+   aspect-ratio: 1/1;
+   border: 1px solid rgb(255, 255, 255);
+   border-radius: 50%;
+   animation: spin 50s infinite linear;
+   display: flex;
+   z-index: 1;
+}
+
+.orbit2{
+position: fixed;
+top: 50%;
+left: 50%;
+translate: -50% -50%;
+width: 45vw;
+aspect-ratio: 1/1;
+border: 1px solid rgb(255, 255, 255);
+border-radius: 50%;
+animation: spin 50s infinite linear;
+display: flex;
+justify-content: center;
+align-items: center;
+z-index: 1;
+}
+
+.orbit::before, .orbit::after{
+    content: "";
+    position: absolute;
+    width: 24px;
+    aspect-ratio: 1/1;
+    border-radius: inherit;
+    background: hsl(149, 60%, 43%);
+}
+
+.orbit2::before, .orbit2::after{
+    content: "";
+    position: absolute;
+    width: 24px;
+    aspect-ratio: 1/1;
+    border-radius: inherit;
+    background: hsl(149, 60%, 43%);
+}
+
+.orbit3::before, .orbit3::after{
+    content: "";
+    position: absolute;
+    width: 24px;
+    aspect-ratio: 1/1;
+    border-radius: inherit;
+    background: hsl(149, 60%, 43%);
+}
+
+
+.orbit::before{
+    top: 50%;
+    width: 18px;
+    left: -9px;
+}
+
+.orbit2::before{
+    top: 50%;
+    width: 18px;
+    left: -9px;
+}
+
+.orbit3::before{
+    top: 50%;
+    width: 18px;
+    right: -9px;
+}
+
+.orbit::after{
+    top: 50%;
+    right: -12px;
+}
+
+.orbit2::after{
+    top: 50%;
+    right: -12px;
+}
+
+.orbit3::after{
+    top: 50%;
+    left: -12px;
+}
+/* ============================= */
+/* 📱 RESPONSIVE MEDIA QUERIES  */
+/* ============================= */
+
+/* Small phones (max-width: 480px) */
+@media (max-width: 480px) {
+    .login-form {
+        width: 85%;
+        height: auto;
+        padding: 20px;
+        box-shadow: 0 8px 25px hsla(0, 0%, 0%, 0.3);
+    }
+
+    .login-form input,
+    .password-container input,
+    .login-form button {
+        width: 90%;
+    }
+
+    .login-form h2 {
+        font-size: 1.4rem;
+    }
+
+    .login-form h3 {
+        font-size: 0.9rem;
+    }
+
+    .blob,
+    .orbit,
+    .orbit2,
+    .orbit3 {
+        display: none; /* Hide background blobs for smaller screens */
+    }
+}
+
+/* Tablets (481px–768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .login-form {
+        width: 350px;
+        height: auto;
+        padding: 25px;
+    }
+
+    .login-form h2 {
+        font-size: 1.6rem;
+    }
+
+    .login-form h3 {
+        font-size: 1rem;
+    }
+
+    .login-form button {
+        height: 45px;
+    }
+
+    .orbit,
+    .orbit2,
+    .orbit3 {
+        opacity: 0.2;
+    }
+
+    .blob {
+        max-width: 200px;
+    }
+}
+
+/* Small laptops (769px–1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .login-form {
+        width: 350px;
+        height: 480px;
+    }
+
+    .orbit,
+    .orbit2,
+    .orbit3 {
+        width: 30vw;
+        opacity: 0.3;
+    }
+}
+
+/* Large screens (1025px and above) */
+@media (min-width: 1025px) {
+    .login-form {
+        width: 350px;
+    }
+
+    .orbit,
+    .orbit2,
+    .orbit3 {
+        opacity: 0.55;
+    }
+}
